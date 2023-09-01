@@ -1,34 +1,31 @@
 // Tenemos un li de productos
-
 const productos = [
   {nombre: "Zapato negro", tipo: "zapato", color: "negro", img: "./taco-negro.jpg"},
   {nombre: "Zapato azul", tipo: "zapato", color: "azul", img: "./taco-azul.jpg"},
   {nombre: "Bota negra", tipo: "bota", color: "negro", img: "./bota-negra.jpg"},
   {nombre: "Bota azul", tipo: "bota", color: "azul", img: "./bota-azul.jpg"},
   {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
-]
+];
 
-const li = document.getElementById("lista-de-productos") // Se corrigió a getElementById
+const li = document.getElementById("lista-de-productos"); // Se corrige el prop a getElementById
 const $i = document.querySelector('.input');
 
 for (let i = 0; i < productos.length; i++) {
-  var d = document.createElement("div")
-  d.classList.add("producto")
+  var d = document.createElement("div");
+  d.classList.add("producto");
 
-  var ti = document.createElement("p")
-  ti.classList.add("titulo")
-  ti.textContent = productos[i].nombre
-  
+  var ti = document.createElement("p");
+  ti.classList.add("titulo");
+  ti.textContent = productos[i].nombre;
+
   var imagen = document.createElement("img");
   imagen.setAttribute('src', productos[i].img);
 
-  d.appendChild(ti)
-  d.appendChild(imagen)
+  d.appendChild(ti);
+  d.appendChild(imagen);
 
-  li.appendChild(d)
+  li.appendChild(d);
 }
-
-// displayProductos(productos) // Está línea está de más
 
 const botonDeFiltro = document.querySelector('#button'); /* Se corrige la sintaxis del QuerySelector */
 
@@ -37,29 +34,34 @@ botonDeFiltro.onclick = function() {
     li.removeChild(li.firstChild);
   }
 
-  const inputElement = document.getElementById("text") /* Se agrega esta linea para obtener valores del input */
-  const texto = inputElement.value
- /*  console.log(texto); */ /* Este console log esta de mas */
-  const productosFiltrados = filtrado(productos, texto );
+  const inputElement = document.getElementById("text"); /* Se agrega esta línea para obtener valores del input */
+  const texto = inputElement.value.toLowerCase(); /* Convertir el texto a minúsculas */
+
+   /*  console.log(texto); */ /* Este console log esta de mas */
+
+  const productosFiltrados = filtrado(productos, texto);
 
   for (let i = 0; i < productosFiltrados.length; i++) {
-    var d = document.createElement("div")
-    d.classList.add("producto")
-  
-    var ti = document.createElement("p")
-    ti.classList.add("titulo")
-    ti.textContent = productosFiltrados[i].nombre
-    
+    var d = document.createElement("div");
+    d.classList.add("producto");
+
+    var ti = document.createElement("p");
+    ti.classList.add("titulo");
+    ti.textContent = productosFiltrados[i].nombre;
+
     var imagen = document.createElement("img");
     imagen.setAttribute('src', productosFiltrados[i].img);
-  
-    d.appendChild(ti)
-    d.appendChild(imagen)
-  
-    li.appendChild(d)
+
+    d.appendChild(ti);
+    d.appendChild(imagen);
+
+    li.appendChild(d);
   }
-}
+};
 
 const filtrado = (productos = [], texto) => {
-  return productos.filter(item => item.tipo.includes(texto) || item.color.includes(texto));
-}  
+  return productos.filter(item => 
+    item.tipo.toLowerCase().includes(texto) || 
+    item.color.toLowerCase().includes(texto)
+  );
+};

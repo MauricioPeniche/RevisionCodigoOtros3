@@ -1,11 +1,11 @@
 input {
-  width: 500px;
+  width: 500px; 
   height: 40px;
   font-size: 18px;
 }
 
 #lista-de-productos {
-  display: flex
+  display: flex; /* Se agrega el punto y coma por buenas practicas */
 }
 
 .producto {
@@ -20,5 +20,5 @@ input {
 
 .producto img {
   width: 70%;
-  height: auto
+  height: auto; /* Se agrega el unto y coma por buenas practicas  */
 }
