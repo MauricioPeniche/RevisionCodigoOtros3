@@ -8,7 +8,7 @@ const productos = [
   {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
 ]
 
-const li = document.getElementsByName("lista-de-productos")
+const li = document.getElementById("lista-de-productos") // Se corrigió a getElementById
 const $i = document.querySelector('.input');
 
 for (let i = 0; i < productos.length; i++) {
@@ -28,16 +28,18 @@ for (let i = 0; i < productos.length; i++) {
   li.appendChild(d)
 }
 
-displayProductos(productos)
-const botonDeFiltro = document.querySelector("button");
+// displayProductos(productos) // Está línea está de más
+
+const botonDeFiltro = document.querySelector('#button'); /* Se corrige la sintaxis del QuerySelector */
 
 botonDeFiltro.onclick = function() {
   while (li.firstChild) {
     li.removeChild(li.firstChild);
   }
 
-  const texto = $i.value;
-  console.log(texto);
+  const inputElement = document.getElementById("text") /* Se agrega esta linea para obtener valores del input */
+  const texto = inputElement.value
+ /*  console.log(texto); */ /* Este console log esta de mas */
   const productosFiltrados = filtrado(productos, texto );
 
   for (let i = 0; i < productosFiltrados.length; i++) {
