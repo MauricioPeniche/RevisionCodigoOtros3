@@ -20,5 +20,5 @@ input {
 
 .producto img {
   width: 70%;
-  height: auto; /* Se agrega el unto y coma por buenas practicas  */
+  height: auto; /* Se agrega el punto y coma por buenas practicas  */
 }
